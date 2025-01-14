@@ -4,19 +4,19 @@ function temperatureConversion(temperature, fromScale, toScale){
 //        - Check if the temperature is null, undefined, or a non-numeric string. If so, throw an error "Invalid temperature input".
     let nonNumericReg = ["", " ", null]
     if (isNaN(temperature) || nonNumericReg.includes(temperature)) {
-        console.log("Invalid temperature input")
+        throw new Error("Invalid temperature input")
     } 
 
 //        - Convert the temperature to a number.
-        parseFloat(temperature)
+    parseFloat(temperature)
 //        - Normalise fromScale and toScale to uppercase.
-        fromScale = fromScale.toUpperCase();
-        toScale = toScale.toUpperCase();
+    fromScale = fromScale.toUpperCase();
+    toScale = toScale.toUpperCase();
 //        - Check if fromScale and toScale are valid ( e.g. 'C', 'F'). If not, throw an error "Invalid conversion type or input scale".
-        let validScale = ['C', 'F', 'K'];
+    let validScale = ['C', 'F', 'K'];
 
-    if (!validScale.includes(fromScale) && !validScale.includes(toScale)) {
-        console.log("Invalid conversion type or input scale")
+    if (!validScale.includes(fromScale) || !validScale.includes(toScale)) {
+        throw new Error("Invalid conversion type or input scale")
     }
 
 // TODO: Define helper functions for the conversions:
@@ -49,6 +49,16 @@ function temperatureConversion(temperature, fromScale, toScale){
         let tempInKelvin = fahrenheitToCelsius(fahrenheit) + 273.15
         return tempInKelvin
     }
+    
+    function kelvinToCelsius(kelvin) {
+        let tempInCelsius = kelvin - 273.15
+        return Number(tempInCelsius)
+    }
+
+    function kelvinToFahrenheit(kelvin) {
+        let tempInFahrenheit = (kelvin - 273.15) * 1.8 + 32
+        return Number(tempInFahrenheit)
+    }
 //        
 // TODO: Implement the conversion logic:
 //        - Use conditional logic to handle different toScale values (e.g. 'C', 'F').
@@ -67,7 +77,10 @@ function temperatureConversion(temperature, fromScale, toScale){
                         fromScale == 'C' && toScale =='F' ? celsiusToFahrenheit(temperature) :
                         fromScale == 'F' && toScale == 'C' ? fahrenheitToCelsius(temperature) :
                         fromScale == 'C' && toScale == 'K' ? celsiusToKelvin(temperature) :
-                        fahrenheitToKelvin(temperature)
+                        fromScale == 'F' && toScale == 'K' ? fahrenheitToKelvin(temperature) :
+                        fromScale == 'K' && toScale == 'C' ? kelvinToCelsius(temperature) :
+                        kelvinToFahrenheit(temperature)
+
     return convertedTemp
     
 //        - Within each condition, handle conversions from different fromScale values (e.g. 'C', 'F') to the target toScale.
@@ -76,7 +89,7 @@ function temperatureConversion(temperature, fromScale, toScale){
 
 } 
 
-console.log(temperatureConversion(20, 'C', "C"))
+console.log(temperatureConversion('20', 'C', "X"))
 
 
 
