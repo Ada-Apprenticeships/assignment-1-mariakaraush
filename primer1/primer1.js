@@ -89,7 +89,7 @@ function temperatureConversion(temperature, fromScale, toScale){
 
 } 
 
-console.log(temperatureConversion('20', 'C', "X"))
+console.log(temperatureConversion(22, 'C', 'k'))
 
 
 
