@@ -21,7 +21,7 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1) {
         }
         return cardsDeck;
     }
-    console.log(createCardDeck(2).length)
+    // console.log(createCardDeck(2).length)
 
     let cardsDeck = createCardDeck(numDecks);
 
@@ -29,9 +29,19 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1) {
 //       -  numPlayers should be a positive integer.
 //       -  cardsPerPlayer should be a positive integer.
 //       -  Throw an error if the requested cards exceed the deck size.
-    if (Math.sign(numPlayers) == -1 || Math.sign(cardsPerPlayer) == -1 || numDecks > 2) {
-        // return shuffleAndDeal();
-        console.log("wrongs number")
+
+    function validateNumbers(number, name) {
+        if (isNaN(number) || number <= 0 || Math.sign(number) == -1) {
+            throw Error (`${name} must be a positive integer`)
+        }            
+    }
+
+    validateNumbers(numPlayers);
+    validateNumbers(cardsPerPlayer);
+    validateNumbers(numDecks)
+
+    if ( numDecks > 2 || numDecks < 1) {
+        throw Error ("Wrongs number")
     }
     if (cardsPerPlayer > 52 * numDecks) {
         throw Error("The requested number of cards exceed the deck size")
@@ -52,6 +62,8 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1) {
     // console.log(shuffleTheCards(cardsDeck))
 
     cardsDeck = shuffleTheCards(cardsDeck)
+
+    
 
 // TODO: Deal cards to the specified number of players.
     function dealingCards(numPlayers, cardsPerPlayer, cardsArray) {
@@ -74,7 +86,7 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1) {
         return allDealtcards
 
     }
-    console.log(dealingCards(3,3, cardsDeck))
+    // console.log(dealingCards(3,3, cardsDeck))
     let dealtCards = dealingCards(numPlayers, cardsPerPlayer, cardsDeck)
 
 // TODO: Return the hands dealt as an array of arrays.
@@ -86,6 +98,8 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1) {
 
 }
 
-shuffleAndDeal(3, 5, 2)
+console.log(shuffleAndDeal(1, 1, 1))
+
+
 export default shuffleAndDeal;
 
