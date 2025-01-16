@@ -32,25 +32,26 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1) {
 
     function validateNumbers(number, name) {
         if (isNaN(number) || number <= 0 || Math.sign(number) == -1) {
-            throw Error (`${name} must be a positive integer`)
+            throw Error (`Number must be a positive integer`);
         }            
+        if ( name == "numDecks" && (name > 2 || name < 1)) {
+            throw new Error (`NumDecks must be 1 or 2`)
+        }
+        if (cardsPerPlayer > 52 * numDecks) {
+        throw new Error("The requested number of cards exceed the deck size")
+        }
     }
 
-    validateNumbers(numPlayers);
-    validateNumbers(cardsPerPlayer);
-    validateNumbers(numDecks)
 
-    if ( numDecks > 2 || numDecks < 1) {
-        throw Error ("Wrongs number")
-    }
-    if (cardsPerPlayer > 52 * numDecks) {
-        throw Error("The requested number of cards exceed the deck size")
-    }
+    validateNumbers(numPlayers, "numPlayers");
+    validateNumbers(cardsPerPlayer, "cardsPerPlayer");
+    validateNumbers(numDecks, "numDecks");
+
 
 // TODO: Shuffle the deck using a suitable algorithm
 //       -  Consider time complexity and randomness.
 
-    function shuffleTheCards(cardsArray) { // Using Fisher-Yates sorting algorithm 
+    function shuffleTheCards(cardsArray) { // Using Fisher-Yates sorting algorithm, O(1) time and space compexity 
         for (let i = cardsArray.length - 1; i > 0; i--) { 
             const j = Math.floor(Math.random() * (i + 1)); 
             [cardsArray[i], cardsArray[j]] = [cardsArray[j], cardsArray[i]]; 
@@ -74,14 +75,14 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1) {
             throw Error ("Not enough cards")
         }
         for (let player = 0; player < numPlayers; player++){
-            let deltCardsPerPlayer = [];
+            let dealtCardsPerPlayer = [];
 
             for (let card = 0; card < cardsPerPlayer; card++) {
-                deltCardsPerPlayer.push(cardsArray[i])
+                dealtCardsPerPlayer.push(cardsArray[i])
                 i++
             }
 
-            allDealtcards.push(deltCardsPerPlayer)
+            allDealtcards.push(dealtCardsPerPlayer)
         }
         return allDealtcards
 
@@ -98,7 +99,7 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1) {
 
 }
 
-console.log(shuffleAndDeal(1, 1, 1))
+console.log(shuffleAndDeal(5, 2, 2))
 
 
 export default shuffleAndDeal;
