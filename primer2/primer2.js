@@ -15,7 +15,6 @@ function createCardDeck(numbOfDecks) {
     return cardsDeck;
 }
 
-
 // TODO: Implement input validation to handle invalid inputs:
 //       -  numPlayers should be a positive integer.
 //       -  cardsPerPlayer should be a positive integer.
