@@ -1,6 +1,42 @@
 // TODO: Implement the createLinkedList function
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+
+class LinkedList {
+  constructor() {
+    this.head = null;
+  } 
+
+  createList(value) {
+    if (value.length === 0) {
+      return;
+    }
+
+    this.head = new Node(value[0]);
+    let current = this.head;
+    for (let i = 1; i < value.length; i++) {
+      current.next = new Node(value[i]);
+      current = current.next;
+  }
+  }
+
+  displayList() {
+    let current = this.head;
+    while (current) {
+      console.log(current.data);
+      current = current.next;
+    }
+  }
+}
+
+
 function createLinkedList(posts) {
   // TODO: Check if the input 'posts' is valid (an array with at least one element)
+  
   // TODO: Iterate through each post in the 'posts' array
   // TODO: Validate the structure of each post (ensure it has 'text', 'timestamp', and 'author' properties with correct types and values)
   // TODO: If any post has an invalid structure, throw an error

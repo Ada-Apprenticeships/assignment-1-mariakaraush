@@ -32,7 +32,7 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1) {
 
     function validateNumbers(number, name) {
         if (isNaN(number) || number <= 0 || Math.sign(number) == -1) {
-            throw Error (`Number must be a positive integer`);
+            throw Error (`${name} Number must be a positive integer`);
         }            
         if ( name == "numDecks" && (name > 2 || name < 1)) {
             throw new Error (`NumDecks must be 1 or 2`)
@@ -43,9 +43,14 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1) {
     }
 
 
-    validateNumbers(numPlayers, "numPlayers");
-    validateNumbers(cardsPerPlayer, "cardsPerPlayer");
-    validateNumbers(numDecks, "numDecks");
+    try {
+        validateNumbers(numPlayers, "numPlayers");
+        validateNumbers(cardsPerPlayer, "cardsPerPlayer");
+        validateNumbers(numDecks, "numDecks");
+} catch(error) {
+    console.error(error.message)
+}
+
 
 
 // TODO: Shuffle the deck using a suitable algorithm
@@ -99,7 +104,7 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1) {
 
 }
 
-console.log(shuffleAndDeal(5, 2, 2))
+console.log(shuffleAndDeal(5, 0, 2))
 
 
 export default shuffleAndDeal;
