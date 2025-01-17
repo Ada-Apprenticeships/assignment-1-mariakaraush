@@ -36,10 +36,17 @@ class LinkedList {
 
 function createLinkedList(posts) {
   // TODO: Check if the input 'posts' is valid (an array with at least one element)
-  
+  if (!Array.isArray(posts) && posts.length <= 0) {
+    throw Error ("Invalid array")
+  }
   // TODO: Iterate through each post in the 'posts' array
   // TODO: Validate the structure of each post (ensure it has 'text', 'timestamp', and 'author' properties with correct types and values)
   // TODO: If any post has an invalid structure, throw an error
+  
+  const requiredKeys = [{text: "string", timestamp: "timestamp", author: "string"}]
+  for (i = 0; i < posts.length - 1; i++ ) {
+    if (posts[i] != [])
+  }
   // TODO: Create the linked list with the validated posts
   // TODO: Return the head of the linked list
 }
