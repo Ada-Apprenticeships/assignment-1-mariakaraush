@@ -127,15 +127,11 @@ function searchSocialMediaFeed(feed, keyword) {
   while (current) {
     let currentItem = current.data.text.toLowerCase().split(' ')
     // console.log(currentItem)
-    for (let i = 0; i < currentItem.length; i++) {
-      if (currentItem[i].includes(keyword)) {
-        console.log(currentItem[i]);
+      if (currentItem.some(element => element.includes(keyword))) {
         newArray.push(current.data)
       }
-    }
     current = current.next;
   }
-
   return newArray
   }
   // TODO: Normalise the text of the current post for case-insensitive search

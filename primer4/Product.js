@@ -39,4 +39,43 @@ class Product {
     }
   }
 
-  export default Product;
+
+class ClothingProduct extends Product {
+    #size;
+    #material;
+    constructor(size, material){
+        super();
+        this.#size = size;
+        this.#material = material
+    }
+
+    get size () {
+        return this.#size
+    }
+
+    get material() {
+        return this.#material
+    }
+}
+
+
+class ElectronicsProduct extends Product {
+    #brand;
+    #warranty;
+    constructor(brand, warranty){
+        super();
+        this.#brand = brand;
+        this.#warranty = warranty
+
+    }
+
+    get brand() {
+        return this.#brand
+    }
+
+    get warranty() {
+        return this.#warranty
+    }
+
+}
+  export {Product, ClothingProduct, ElectronicsProduct};
