@@ -14,10 +14,11 @@ class LinkedList {
     this.head = new Node(array[0]);
     let current = this.head;
     for (let i = 1; i < array.length; i++) {
-      console.log("looping..")
+      // console.log("looping..")
       current.next = new Node(array[i]);
       current = current.next;
-  }
+    }
+  
   }
 
   displayList() {
@@ -29,7 +30,22 @@ class LinkedList {
   }
   getFirst() {
     return this.head;
-}
+  }
+  // searchList(keyword, key = "text") {
+  //   let list = []
+  //   let current = this.head;
+  //     while (current != null) {
+  //       let currentItem = current.data[key].toLowerCase()
+  //       console.log(currentItem)
+  //       if (currentItem.includes(keyword)) {
+  //         console.log(current.data);
+  //         list.push(current.data)
+  //       }
+  //       current = current.next;
+  //     }
+  //   return list
+  // }
+
 }
 
 class Node {
@@ -97,27 +113,68 @@ function searchSocialMediaFeed(feed, keyword) {
   // TODO: Handle the case where the feed is empty
   // TODO: Initialise an empty array to store the search results
 
-  let newArray = [];
+  let newArray =[]
   // TODO: Normalise the keyword for case-insensitive search
- 
+  keyword = keyword.toLowerCase();
+  console.log(keyword)
   // TODO: Split the keyword into individual words
+
   // TODO: Traverse the linked list
+  // return feed.searchList(keyword)
+  let posts = feed
+  // console.log(posts)
+  let current = posts;
+  while (current) {
+    let currentItem = current.data.text.toLowerCase().split(' ')
+    // console.log(currentItem)
+    for (let i = 0; i < currentItem.length; i++) {
+      if (currentItem[i].includes(keyword)) {
+        console.log(currentItem[i]);
+        newArray.push(current.data)
+      }
+    }
+    current = current.next;
+  }
+
+  return newArray
+  }
   // TODO: Normalise the text of the current post for case-insensitive search
   // TODO: Split the text of the current post into individual words
   // TODO: Check if any keyword word is partially present in any text word
   // TODO: If there's a partial match, add the current post to the results
   // TODO: Return the array of search results
-}
 
 // ADDITIONAL TODO - The suggested functions above can be refactored into multiple functions if you think appropriate.
 
-const feed = [
+// let feed = [
+//   { text: 'Hello world!', timestamp: '2024-03-11 10:00:00', author: 'Alice' },
+//   { text: 'Having a great day!', timestamp: '2024-03-11 11:30:00', author: 'Bob' },
+//   { text: 'Just finished a fantastic game.', timestamp: '2024-03-11 12:15:00', author: 'Aqil' },
+//   { text: 'Another great post!', timestamp: '2024-03-11 13:00:00', author: 'Diana' }
+// ];
+
+// console.log(feed.length)
+let feed = createLinkedList([
   { text: 'Hello world!', timestamp: '2024-03-11 10:00:00', author: 'Alice' },
   { text: 'Having a great day!', timestamp: '2024-03-11 11:30:00', author: 'Bob' },
   { text: 'Just finished a fantastic game.', timestamp: '2024-03-11 12:15:00', author: 'Aqil' },
-];
+  { text: 'Another great post!', timestamp: '2024-03-11 13:00:00', author: 'Diana' }
+]);
 
-// console.log(feed.length)
-console.log(createLinkedList(feed))
+
+// console.log(searchSocialMediaFeed(feed, 'ingerer'))
+
+// console.log(feed)
+const longText = 'a'.repeat(10000) + 'target' + 'b'.repeat(10000);
+// const feed = createLinkedList([
+//   { 
+//     text: longText,
+//     timestamp: '2024-03-11 10:00:00',
+//     author: 'Alice'
+//   }
+// ]);
+
+console.log(searchSocialMediaFeed(feed, 'gr'))
+
 
 export {createLinkedList, searchSocialMediaFeed};
