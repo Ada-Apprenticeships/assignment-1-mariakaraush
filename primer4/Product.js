@@ -43,8 +43,8 @@ class Product {
 class ClothingProduct extends Product {
     #size;
     #material;
-    constructor(size, material){
-        super();
+    constructor(size, material, ...productProps){
+        super(...productProps);
         this.#size = size;
         this.#material = material
     }
@@ -56,14 +56,22 @@ class ClothingProduct extends Product {
     get material() {
         return this.#material
     }
+
+    getProductDetails() {
+      return {
+        ...super.getProductDetails(),
+        size: this.size,
+        material:this.material
+       }
+    }
 }
 
 
 class ElectronicsProduct extends Product {
     #brand;
     #warranty;
-    constructor(brand, warranty){
-        super();
+    constructor(brand, warranty, ...productProps){
+        super(...productProps);
         this.#brand = brand;
         this.#warranty = warranty
 
@@ -75,6 +83,14 @@ class ElectronicsProduct extends Product {
 
     get warranty() {
         return this.#warranty
+    }
+
+    getProductDetails() {
+      return {
+        ...super.getProductDetails(),
+        barnd: this.brand,
+        warranty:this.warranty
+       } 
     }
 
 }
