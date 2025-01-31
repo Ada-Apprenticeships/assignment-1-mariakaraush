@@ -1,15 +1,19 @@
 // Import the necessary modules
 import Product from './Product.js';
 import Inventory from './Inventory.js';
+import { ClothingProduct } from './ClothingProduct.js';
+import { ElectronicsProduct } from './ElectronicsProduct.js';
 
 describe('Inventory', () => {
   let inventory;
-  let product1, product2;
+  let product1, product2, shirt, iron;
 
   beforeEach(() => {
     inventory = new Inventory();
     product1 = new Product("A123", "T-shirt", 19.99, 100);
     product2 = new Product("B456", "Jeans", 49.99, 50);
+    shirt = new ClothingProduct(13, "cotton", "999", "Shirt", 20.99, 20,);
+    iron = new ElectronicsProduct("Phillips", "2 years", "234", "iron", 29, 10);
   });
 
   describe('Adding Products', () => {
@@ -24,6 +28,14 @@ describe('Inventory', () => {
       expect(() => inventory.addProduct(product1)).toThrowError(`Product with ID ${product1.id} already exists.`);
     });
   });
+
+  describe('Adding clothing and electronic products', () => {
+    test('can add new subclass products', () => {
+      inventory.addProduct(shirt);
+      inventory.addProduct(iron);
+      expect(inventory.getNumOfItems()).toBe(2);
+    })
+  })
 
   describe('Updating Product Quantities', () => {
     test('can update the quantity of a product', () => {

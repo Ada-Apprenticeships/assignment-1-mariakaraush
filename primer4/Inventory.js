@@ -38,6 +38,12 @@ class Inventory {
   getNumOfItems() {
     return this.#products.size;
   }
+
+  printPruducts() {
+    this.#products.forEach(item => {
+      console.log(item.getProductDetails())
+    });
+  }
 }
 
 export default Inventory;

@@ -5,6 +5,9 @@ class Product {
     #quantity;
   
     constructor(id, name, price, quantity) {
+      // if (this.constructor === Product) {
+      //   throw new Error("Can't instantiate and abstract class")
+      // }
       this.#id = id;
       this.#name = name;
       this.#price = price;
@@ -39,59 +42,4 @@ class Product {
     }
   }
 
-
-class ClothingProduct extends Product {
-    #size;
-    #material;
-    constructor(size, material, ...productProps){
-        super(...productProps);
-        this.#size = size;
-        this.#material = material
-    }
-
-    get size () {
-        return this.#size
-    }
-
-    get material() {
-        return this.#material
-    }
-
-    getProductDetails() {
-      return {
-        ...super.getProductDetails(),
-        size: this.size,
-        material:this.material
-       }
-    }
-}
-
-
-class ElectronicsProduct extends Product {
-    #brand;
-    #warranty;
-    constructor(brand, warranty, ...productProps){
-        super(...productProps);
-        this.#brand = brand;
-        this.#warranty = warranty
-
-    }
-
-    get brand() {
-        return this.#brand
-    }
-
-    get warranty() {
-        return this.#warranty
-    }
-
-    getProductDetails() {
-      return {
-        ...super.getProductDetails(),
-        barnd: this.brand,
-        warranty:this.warranty
-       } 
-    }
-
-}
-  export {Product, ClothingProduct, ElectronicsProduct};
+  export {Product as default};
