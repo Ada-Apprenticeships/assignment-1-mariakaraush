@@ -80,7 +80,7 @@ describe('Inventory', () => {
   describe('Adding clothing and electronic products', () => {
     test('can add new ClothingProduct', () => {
       inventory.addProduct(shirt);
-      expect(inventory.getProduct("999")).hasOwn("size");
+      expect(inventory.getProduct("999").hasOwnProperty("size"));
       expect(inventory.getNumOfItems()).toBe(1);
     })
 
