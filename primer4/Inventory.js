@@ -39,7 +39,7 @@ class Inventory {
     return this.#products.size;
   }
 
-  printPruducts() {
+  printProducts() {
     this.#products.forEach(item => {
       console.log(item.getProductDetails())
     });

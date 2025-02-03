@@ -5,9 +5,11 @@ class Product {
     #quantity;
   
     constructor(id, name, price, quantity) {
+      
       // if (this.constructor === Product) {
       //   throw new Error("Can't instantiate and abstract class")
       // }
+
       this.#id = id;
       this.#name = name;
       this.#price = price;

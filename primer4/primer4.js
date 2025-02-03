@@ -16,13 +16,13 @@ try {
   inventory.addProduct(shirt);
   inventory.addProduct(iron);
   inventory.updateQuantity("A123", 50);
-  const retrievedProduct = inventory.getProduct("B456");
-  console.log(retrievedProduct);
-  console.log(inventory.getProduct("999"))
-  console.log(inventory.getProduct("234"))
-  inventory.removeProduct("A123");
+  // const retrievedProduct = inventory.getProduct("B456");
+  // console.log(retrievedProduct);
+  // console.log(inventory.getProduct("999"))
+  // console.log(inventory.getProduct("234"))
+  // inventory.removeProduct("A123");
   console.log(inventory.getNumOfItems())
-  console.log(inventory.printPruducts())
+  console.log(inventory.printProducts())
 } catch (error) {
   console.error("An error occurred:", error.message);
 }
