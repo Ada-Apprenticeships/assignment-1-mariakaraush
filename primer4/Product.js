@@ -1,3 +1,5 @@
+import validatePropertiesImput from './validatePropertiesImput.js'
+
 class Product {
     #id;
     #name;
@@ -10,10 +12,10 @@ class Product {
       //   throw new Error("Can't instantiate and abstract class")
       // }
 
-      this.#id = id;
-      this.#name = name;
-      this.#price = price;
-      this.#quantity = quantity;
+      this.#id = validatePropertiesImput(id, "Id");
+      this.#name = validatePropertiesImput(name, "Name");
+      this.#price = validatePropertiesImput(price, "Price");
+      this.#quantity = validatePropertiesImput(quantity, "Quantity");
     }
   
     get id() {

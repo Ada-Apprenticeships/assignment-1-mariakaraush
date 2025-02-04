@@ -17,6 +17,9 @@ class Inventory {
     if (!product) {
       throw new Error(`Product with ID ${id} not found.`);
     }
+    if (isNaN(quantity) || quantity < 0) {
+      throw new Error(`${quantity} in not a valid quantity`)
+    }
     product.quantity = quantity;
   }
 
