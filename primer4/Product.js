@@ -8,9 +8,9 @@ class Product {
   
     constructor(id, name, price, quantity) {
       
-      // if (this.constructor === Product) {
-      //   throw new Error("Can't instantiate and abstract class")
-      // }
+      if (this.constructor === Product) {
+        throw new Error("Can't instantiate an abstract class")
+      }
 
       this.#id = validatePropertiesImput(id, "Id");
       this.#name = validatePropertiesImput(name, "Name");

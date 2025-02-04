@@ -15,11 +15,6 @@ function createCardDeck(numbOfDecks) {
     return cardsDeck;
 }
 
-// TODO: Implement input validation to handle invalid inputs:
-//       -  numPlayers should be a positive integer.
-//       -  cardsPerPlayer should be a positive integer.
-//       -  Throw an error if the requested cards exceed the deck size.
-
 function validateNumbers(number, name, numberOfDecks = 1) {
     if (isNaN(number) || number <= 0 || Math.sign(number) == -1) {
         throw Error (`Number must be a positive integer`);
@@ -32,20 +27,15 @@ function validateNumbers(number, name, numberOfDecks = 1) {
     }
 }
 
-// TODO: Shuffle the deck using a suitable algorithm
-//       -  Consider time complexity and randomness.
 
-function shuffleTheCards(cardsArray) { // Using Fisher-Yates sorting algorithm, O(1) time and space compexity 
+function shuffleTheCards(cardsArray) { // Using Fisher-Yates sorting algorithm, O(n) time and space complexity, for sort().Math.Random() time complexity O(n log n)
     for (let i = cardsArray.length - 1; i > 0; i--) { 
         const j = Math.floor(Math.random() * (i + 1)); 
         [cardsArray[i], cardsArray[j]] = [cardsArray[j], cardsArray[i]]; 
     } 
     return cardsArray; 
-    
 }
 
-// TODO: Write a function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1)
-// that simulates shuffling and dealing a deck of cards.
 function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1) {
 
     validateNumbers(numPlayers, "numPlayers");
@@ -55,7 +45,6 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1) {
     let cardsDeck = createCardDeck(numDecks);
     cardsDeck = shuffleTheCards(cardsDeck);
 
-// TODO: Deal cards to the specified number of players.
     let allDealtcards = [];
     let i = 0;
     const totalCardsRequired = numPlayers * cardsPerPlayer
@@ -73,12 +62,6 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1) {
         allDealtcards.push(dealtCardsPerPlayer);
     }
     return allDealtcards;
-
-// TODO: Test the function with various inputs, including edge cases:
-//       -  Dealing the entire deck.
-//       -  Single player.
-//       -  Minimum cards per hand.
-
 }
 
 console.log(shuffleAndDeal(5, 2, 2))

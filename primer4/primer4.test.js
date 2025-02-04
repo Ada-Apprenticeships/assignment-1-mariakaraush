@@ -10,8 +10,8 @@ describe('Inventory', () => {
 
   beforeEach(() => {
     inventory = new Inventory();
-    product1 = new Product("A123", "T-shirt", 19.99, 100);
-    product2 = new Product("B456", "Jeans", 49.99, 50);
+    product1 = new ClothingProduct("A123", "T-shirt", 19.99, 100);
+    product2 = new ClothingProduct("B456", "Jeans", 49.99, 50);
     shirt = new ClothingProduct("999", "Shirt", 20.99, 20, 13, "cotton");
     iron = new ElectronicsProduct ("234", "iron", 29, 10, "Phillips", "2 years",);
   });
