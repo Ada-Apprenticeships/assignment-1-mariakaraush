@@ -82,20 +82,20 @@ describe('Inventory', () => {
       inventory.addProduct(shirt);
       expect(inventory.getProduct("999").hasOwnProperty("size"));
       expect(inventory.getNumOfItems()).toBe(1);
-    })
+    });
 
     test('can add new ElectronicProduct', () => {
       inventory.addProduct(iron);
-      expect(inventory.getProduct("234").warranty).toBe("2 years")
+      expect(inventory.getProduct("234").warranty).toBe("2 years");
       expect(inventory.getNumOfItems()).toBe(1);
-    })
-  })
+    });
+  });
 
   describe('Printing all products from inventory', () => {
     test('can display all products from inventory', () => {
       inventory.addProduct(shirt);
       inventory.addProduct(iron);
-      console.log(inventory.printProducts())
+      console.log(inventory.printProducts());
 
       console.log = jest.fn();
 
@@ -110,7 +110,7 @@ describe('Inventory', () => {
           size: 13,
           material: 'cotton'
         }
-      )
+      );
       expect(console.log).toHaveBeenCalledWith(
       {
         id: '234',
@@ -120,10 +120,10 @@ describe('Inventory', () => {
         brand: 'Phillips',
         warranty: '2 years'
       }
-      )
-      expect(console.log).toHaveBeenCalledTimes(2)
-    })
-  })
+      );
+      expect(console.log).toHaveBeenCalledTimes(2);
+    });
+  });
 
  
 });

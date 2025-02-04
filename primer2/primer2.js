@@ -6,11 +6,11 @@ function createCardDeck(numbOfDecks) {
     let cardsDeck =[];
     cardSuits.forEach(element => {
         cardRanks.forEach(item => {
-            cardsDeck.push(`${item} of ${element}`)
+            cardsDeck.push(`${item} of ${element}`);
         })
     });
     if (numbOfDecks == 2) {
-        cardsDeck = cardsDeck.concat(cardsDeck)
+        cardsDeck = cardsDeck.concat(cardsDeck);
     }
     return cardsDeck;
 }
@@ -25,10 +25,10 @@ function validateNumbers(number, name, numberOfDecks = 1) {
         throw Error (`Number must be a positive integer`);
     }            
     if ( numberOfDecks > 2 || numberOfDecks < 1) {
-        throw new Error (`NumDecks must be 1 or 2`)
+        throw new Error (`NumDecks must be 1 or 2`);
     }
     if (name == "cardsPerPlayer" && number > (52 * numberOfDecks)) {
-    throw new Error("The requested number of cards exceed the deck size")
+    throw new Error("The requested number of cards exceed the deck size");
     }
 }
 
@@ -66,13 +66,13 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1) {
         let dealtCardsPerPlayer = [];
 
         for (let card = 0; card < cardsPerPlayer; card++) {
-            dealtCardsPerPlayer.push(cardsDeck[i])
-            i++
+            dealtCardsPerPlayer.push(cardsDeck[i]);
+            i++;
         }
 
-        allDealtcards.push(dealtCardsPerPlayer)
+        allDealtcards.push(dealtCardsPerPlayer);
     }
-    return allDealtcards
+    return allDealtcards;
 
 // TODO: Test the function with various inputs, including edge cases:
 //       -  Dealing the entire deck.

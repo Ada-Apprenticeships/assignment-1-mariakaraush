@@ -6,15 +6,15 @@ class ClothingProduct extends Product {
     constructor(id, name, price, quantity, size, material){
         super(id, name, price, quantity);
         this.#size = size;
-        this.#material = material
+        this.#material = material;
     }
 
     get size () {
-        return this.#size
+        return this.#size;
     }
 
     get material() {
-        return this.#material
+        return this.#material;
     }
 
     getProductDetails() {
@@ -22,8 +22,8 @@ class ClothingProduct extends Product {
         ...super.getProductDetails(),
         size: this.size,
         material:this.material
-       }
+       };
     }
 }
 
-export {ClothingProduct}
+export {ClothingProduct};

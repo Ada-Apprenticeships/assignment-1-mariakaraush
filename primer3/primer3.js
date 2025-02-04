@@ -14,7 +14,7 @@ class LinkedList {
     this.head = new Node(array[0]);
     let current = this.head;
     for (let i = 1; i < array.length; i++) {
-      // console.log("looping..")
+      // console.log("looping..");
       current.next = new Node(array[i]);
       current = current.next;
     }
@@ -32,18 +32,18 @@ class LinkedList {
     return this.head;
   }
   // searchList(keyword, key = "text") {
-  //   let list = []
+  //   let list = [];
   //   let current = this.head;
   //     while (current != null) {
-  //       let currentItem = current.data[key].toLowerCase()
-  //       console.log(currentItem)
+  //       let currentItem = current.data[key].toLowerCase();
+  //       console.log(currentItem);
   //       if (currentItem.includes(keyword)) {
   //         console.log(current.data);
-  //         list.push(current.data)
+  //         list.push(current.data);
   //       }
   //       current = current.next;
   //     }
-  //   return list
+  //   return list;
   // }
 
 }
@@ -57,19 +57,22 @@ class Node {
 
 
 function isValidTimestamp(timestamp) {
-  const timestampRegex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/
+  const timestampRegex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/;
 
   if (!timestampRegex.test(timestamp)) {
-    return false
+    return false;
   }
   const date = new Date(timestamp)
   return !isNaN(date.getTime());
 }
 
 function postValidation(posts) {
+  if (!Array.isArray(posts) && posts.length <= 0) {
+    throw Error ("Invalid array");
+  }
   for (let item of posts ) {
     if (Object.entries(item).length < 3) {
-      throw Error ("Invalid structure")
+      throw Error ("Invalid structure");
     }
     // console.log(item)
     // console.log(typeof item.text)
@@ -80,7 +83,7 @@ function postValidation(posts) {
         || !isValidTimestamp(item.timestamp)
         || typeof item.author  != 'string'
         || !(item.author).length >= 1) {
-      throw Error ("Invalid datatypes")
+      throw Error ("Invalid datatypes");
     } 
   }
 }
@@ -88,27 +91,25 @@ function postValidation(posts) {
 
 function createLinkedList(posts) {
   // TODO: Check if the input 'posts' is valid (an array with at least one element)
-  if (!Array.isArray(posts) && posts.length <= 0) {
-    throw Error ("Invalid array")
-  }
+  
   // TODO: Iterate through each post in the 'posts' array
   // TODO: Validate the structure of each post (ensure it has 'text', 'timestamp', and 'author' properties with correct types and values)
   // TODO: If any post has an invalid structure, throw an error
 
-  postValidation(posts)
+  postValidation(posts);
   // TODO: Create the linked list with the validated posts
   let linkedList = new LinkedList();
   // TODO: Return the head of the linked list
 
-  linkedList.createList(posts)
+  linkedList.createList(posts);
 
-  return linkedList.getFirst()
+  return linkedList.getFirst();
 }
 
 // TODO: Implement the searchSocialMediaFeed function
 function searchSocialMediaFeed(feed, keyword) {
   if (feed.length < 1)
-    return null
+    return null;
 
   // TODO: Handle the case where the feed is empty
   // TODO: Initialise an empty array to store the search results
@@ -116,23 +117,23 @@ function searchSocialMediaFeed(feed, keyword) {
   let newArray =[]
   // TODO: Normalise the keyword for case-insensitive search
   keyword = keyword.toLowerCase();
-  console.log(keyword)
+  console.log(keyword);
   // TODO: Split the keyword into individual words
 
   // TODO: Traverse the linked list
   // return feed.searchList(keyword)
-  let posts = feed
+  let posts = feed;
   // console.log(posts)
   let current = posts;
   while (current) {
-    let currentItem = current.data.text.toLowerCase().split(' ')
+    let currentItem = current.data.text.toLowerCase().split(' ');
     // console.log(currentItem)
       if (currentItem.some(element => element.includes(keyword))) {
-        newArray.push(current.data)
+        newArray.push(current.data);
       }
     current = current.next;
   }
-  return newArray
+  return newArray;
   }
   // TODO: Normalise the text of the current post for case-insensitive search
   // TODO: Split the text of the current post into individual words
@@ -170,7 +171,7 @@ const longText = 'a'.repeat(10000) + 'target' + 'b'.repeat(10000);
 //   }
 // ]);
 
-console.log(searchSocialMediaFeed(feed, 'gr'))
+console.log(searchSocialMediaFeed(feed, 'gr'));
 
 
 export {createLinkedList, searchSocialMediaFeed};

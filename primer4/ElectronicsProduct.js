@@ -11,11 +11,11 @@ class ElectronicsProduct extends Product {
     }
 
     get brand() {
-        return this.#brand
+        return this.#brand;
     }
 
     get warranty() {
-        return this.#warranty
+        return this.#warranty;
     }
 
     getProductDetails() {
@@ -23,9 +23,9 @@ class ElectronicsProduct extends Product {
         ...super.getProductDetails(),
         brand: this.brand,
         warranty:this.warranty
-       } 
+       };
     }
 
 }
 
-export {ElectronicsProduct}
+export {ElectronicsProduct};

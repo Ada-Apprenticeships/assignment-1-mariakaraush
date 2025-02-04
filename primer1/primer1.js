@@ -2,9 +2,9 @@ function temperatureConversion(temperature, fromScale, toScale){
 
 // TODO: Validate the input:
 //        - Check if the temperature is null, undefined, or a non-numeric string. If so, throw an error "Invalid temperature input".
-    let nonNumericReg = ["", " ", null]
+    let nonNumericReg = ["", " ", null];
     if (isNaN(temperature) || nonNumericReg.includes(temperature)) {
-        throw new Error("Invalid temperature input")
+        throw new Error("Invalid temperature input");
     } 
 
 //        - Convert the temperature to a number.
@@ -16,13 +16,13 @@ function temperatureConversion(temperature, fromScale, toScale){
     let validScale = ['C', 'F', 'K'];
 
     if (!validScale.includes(fromScale) || !validScale.includes(toScale)) {
-        throw new Error("Invalid conversion type or input scale")
+        throw new Error("Invalid conversion type or input scale");
     }
 
 // TODO: Define helper functions for the conversions:
 //        - toFahrenheit(celsius): Converts Celsius to Fahrenheit.
     function celsiusToFahrenheit(celsius) {
-        return parseFloat(celsius) * 1.8 + 32
+        return parseFloat(celsius) * 1.8 + 32;
     }
 
     // console.log(toFahrenheit('20'))
@@ -31,33 +31,33 @@ function temperatureConversion(temperature, fromScale, toScale){
     function fahrenheitToCelsius(fahrenheit) {
      
         // console.log(fahrenheit - 32)
-        let convertedToCelsus = (fahrenheit - 32) / 1.8
-        console.log(typeof(Number(convertedToCelsus)))
-        return Number((convertedToCelsus).toFixed(2))
+        let convertedToCelsus = (fahrenheit - 32) / 1.8;
+        console.log(typeof(Number(convertedToCelsus)));
+        return Number((convertedToCelsus).toFixed(2));
     
     }
-    console.log(fahrenheitToCelsius("-20"))
+    console.log(fahrenheitToCelsius("-20"));
 
     function celsiusToKelvin(celsius) {
-        let tempInKelvin = celsius + 273.15
-        return Number(tempInKelvin)
+        let tempInKelvin = celsius + 273.15;
+        return Number(tempInKelvin);
         }
 
     console.log(celsiusToKelvin(30))
 
     function fahrenheitToKelvin(fahrenheit) {
-        let tempInKelvin = fahrenheitToCelsius(fahrenheit) + 273.15
-        return tempInKelvin
+        let tempInKelvin = fahrenheitToCelsius(fahrenheit) + 273.15;
+        return tempInKelvin;
     }
     
     function kelvinToCelsius(kelvin) {
-        let tempInCelsius = kelvin - 273.15
-        return Number(tempInCelsius)
+        let tempInCelsius = kelvin - 273.15;
+        return Number(tempInCelsius);
     }
 
     function kelvinToFahrenheit(kelvin) {
-        let tempInFahrenheit = (kelvin - 273.15) * 1.8 + 32
-        return Number(tempInFahrenheit)
+        let tempInFahrenheit = (kelvin - 273.15) * 1.8 + 32;
+        return Number(tempInFahrenheit);
     }
 //        
 // TODO: Implement the conversion logic:
@@ -71,7 +71,7 @@ function temperatureConversion(temperature, fromScale, toScale){
     // } if (fromScale == 'C' && toScale == 'K') {
     //     return celsiusToKelvin(temperature)
     // } if (fromScale == 'F' && toScale == 'K') {
-    //     return fahrenheitToKelvin(temperature)
+    //     return fahrenheitToKelvin(temperature);
     // }
     let convertedTemp = fromScale == toScale ? Number(temperature) :
                         fromScale == 'C' && toScale =='F' ? celsiusToFahrenheit(temperature) :
@@ -79,9 +79,9 @@ function temperatureConversion(temperature, fromScale, toScale){
                         fromScale == 'C' && toScale == 'K' ? celsiusToKelvin(temperature) :
                         fromScale == 'F' && toScale == 'K' ? fahrenheitToKelvin(temperature) :
                         fromScale == 'K' && toScale == 'C' ? kelvinToCelsius(temperature) :
-                        kelvinToFahrenheit(temperature)
+                        kelvinToFahrenheit(temperature);
 
-    return convertedTemp
+    return convertedTemp;
     
 //        - Within each condition, handle conversions from different fromScale values (e.g. 'C', 'F') to the target toScale.
 //        - Use the helper functions to perform the actual conversions.
@@ -89,7 +89,7 @@ function temperatureConversion(temperature, fromScale, toScale){
 
 } 
 
-console.log(temperatureConversion(22, 'C', 'k'))
+console.log(temperatureConversion(22, 'C', 'k'));
 
 
 
