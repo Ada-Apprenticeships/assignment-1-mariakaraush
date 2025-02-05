@@ -1,6 +1,6 @@
 // TODO: Create a standard 52-card deck (or 104 if numDecks is 2).
 const cardRanks = ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"];
-const cardSuits = ["Clubs", "Diamonds", "Hearts", "Spades"]
+const cardSuits = ["Clubs", "Diamonds", "Hearts", "Spades"];
 
 function createCardDeck(numbOfDecks) {
     let cardsDeck =[];
@@ -29,7 +29,7 @@ function validateNumbers(number, name, numberOfDecks = 1) {
 
 
 function shuffleTheCards(cardsArray) { // Using Fisher-Yates sorting algorithm, O(n) time and space complexity, for sort().Math.Random() time complexity O(n log n)
-    for (let i = cardsArray.length - 1; i > 0; i--) { 
+    for (let i = cardsArray.length - 1; i > 0; i--) {                                                                                           //linearithimic
         const j = Math.floor(Math.random() * (i + 1)); 
         [cardsArray[i], cardsArray[j]] = [cardsArray[j], cardsArray[i]]; 
     } 
@@ -64,7 +64,7 @@ function shuffleAndDeal(numPlayers, cardsPerPlayer, numDecks = 1) {
     return allDealtcards;
 }
 
-console.log(shuffleAndDeal(5, 2, 2))
+console.log(shuffleAndDeal(5, 5, 2))
 
 
 export default shuffleAndDeal;

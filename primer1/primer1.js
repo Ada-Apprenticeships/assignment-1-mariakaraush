@@ -31,7 +31,7 @@ function kelvinToFahrenheit(kelvin) {
 
 function temperatureConversion(temperature, fromScale, toScale){
 
-    let nonNumericReg = ["", " ", null];
+    let nonNumericReg = ["", " ", null]; // isNaN() changes those the 0
     if (isNaN(temperature) || nonNumericReg.includes(temperature)) {
         throw new Error("Invalid temperature input");
     } 
@@ -58,7 +58,7 @@ function temperatureConversion(temperature, fromScale, toScale){
     return convertedTemp;
 } 
 
-console.log(temperatureConversion(22, 'C', 'k'));
+console.log(temperatureConversion(22, 'C', 'K'));
 
 
 
