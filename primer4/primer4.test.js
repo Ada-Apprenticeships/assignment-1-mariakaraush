@@ -124,6 +124,11 @@ describe('Inventory', () => {
       expect(console.log).toHaveBeenCalledTimes(2);
     });
   });
+  describe('Adding Products', () => {
+    test('throws error when adding a base class Product ', () => {
+  
+      expect(() => new Product("A123", "T-shirt", 19.99, 100)).toThrowError("Can't instantiate an abstract class");
+    });
+  });
 
- 
 });
